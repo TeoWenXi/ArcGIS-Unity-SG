@@ -211,14 +211,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 157207112}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.27781588, y: -0.36497167, z: 0.8811196, w: -0.1150751}
+  m_LocalRotation: {x: -0.22395355, y: 0.76859266, z: -0.3584006, w: -0.48026994}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 222420031}
   m_Father: {fileID: 1610324853}
-  m_LocalEulerAnglesHint: {x: 135, y: -215, z: 0}
+  m_LocalEulerAnglesHint: {x: 50, y: 244, z: 0}
 --- !u!114 &157207115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -767,7 +767,7 @@ MonoBehaviour:
       m_Calls: []
   isInitialized: 1
   apiKey: 
-  basemap: https://basemapstyles-api.arcgis.com/arcgis/rest/services/styles/v2/webmaps/arcgis/imagery/standard
+  basemap: https://basemapstyles-api.arcgis.com/arcgis/rest/services/styles/v2/webmaps/arcgis/imagery
   basemapType: 0
   basemapAuthentication:
     ConfigurationIndex: -1
@@ -801,7 +801,30 @@ MonoBehaviour:
       x: 60000
       y: 40000
     UseOriginAsCenter: 1
-  layers: []
+  layers:
+  - Name: Singapore Buildings
+    Type: 1
+    Source: https://basemaps3d.arcgis.com/arcgis/rest/services/OpenStreetMap3D_Buildings_v1/SceneServer
+    OccludeSurface: 1
+    Opacity: 1
+    IsVisible: 1
+    Authentication:
+      ConfigurationIndex: 0
+    AuthenticationType: 1
+    BuildingSceneLayerFilter:
+      ActiveBuildingAttributeFilterIndex: 0
+      BuildingAttributeFilters: []
+      IsBuildingAttributeFilterEnabled: 0
+      IsBuildingDisciplinesCategoriesFilterEnabled: 0
+      EnabledCategories: 
+      EnabledDisciplines: 
+    MeshModifications:
+      IsEnabled: 0
+      MeshModifications: []
+    SpatialFeatureFilter:
+      IsEnabled: 0
+      Polygons: []
+      Type: 0
   originPosition:
     X: 103.8198
     Y: 1.3521
@@ -1047,6 +1070,7 @@ GameObject:
   - component: {fileID: 998675453}
   - component: {fileID: 998675452}
   - component: {fileID: 998675451}
+  - component: {fileID: 998675456}
   m_Layer: 0
   m_Name: ArcGISCamera
   m_TagString: MainCamera
@@ -1062,8 +1086,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 998675449}
   serializedVersion: 2
-  m_LocalRotation: {x: -1, y: -8.271806e-25, z: -0, w: -6.123232e-17}
-  m_LocalPosition: {x: -0.0000000018626451, y: 3000, z: -1.4551915e-10}
+  m_LocalRotation: {x: 0.70710677, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 6000, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1224,7 +1248,7 @@ MonoBehaviour:
   position:
     X: 103.8198
     Y: 1.352100000000001
-    Z: 3000
+    Z: 6000
     SRWkid: 4326
     SpatialReference:
       WKID: 4326
@@ -1232,7 +1256,7 @@ MonoBehaviour:
     version: 1
   rotation:
     Heading: 180
-    Pitch: 90
+    Pitch: 0
     Roll: 180
   surfacePlacementMode: 0
   surfacePlacementOffset: 0
@@ -1251,11 +1275,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: ArcGISMapsSDK::Esri.ArcGISMapsSDK.Components.ArcGISCameraComponent
   UpdateClippingPlanes: 1
   UseCameraViewportProperties: 1
-  verticalFov: 0
-  horizontalFov: 0
-  viewportSizeX: 0
-  viewportSizeY: 0
-  qualityScalingFactor: 1
+  verticalFov: 60
+  horizontalFov: 91.50121
+  viewportSizeX: 1522
+  viewportSizeY: 856
+  qualityScalingFactor: 3
 --- !u!20 &998675454
 Camera:
   m_ObjectHideFlags: 0
@@ -1287,8 +1311,8 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
+  near clip plane: 0.5
+  far clip plane: 599970
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -1321,19 +1345,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: Esri.HPFramework::Esri.HPFramework.HPTransform
   m_IsInitialized: 1
   m_LocalPosition:
-    x: 11557167.270259503
-    y: 3000
-    z: 150529.05559896468
+    x: 11557167.270259505
+    y: 6000
+    z: 150529.05559896483
   m_LocalRotation:
     value:
-      x: 1
-      y: 8.271806e-25
-      z: -0
-      w: 6.123232e-17
+      x: 0.70710677
+      y: 0
+      z: 0
+      w: 0.70710677
   m_LocalScale:
     x: 1
     y: 1
     z: 1
+--- !u!114 &998675456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 998675449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27afbdfc83e47004e95ef7726ed4a9cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: ArcGISMapsSDK.Samples::Esri.ArcGISMapsSDK.Samples.Components.ArcGISCameraControllerComponent
+  MaxSpeed: 2000000
+  MinSpeed: 1000
+  IgnoreUI: 0
+  EnableLeftDragging: 1
+  EnableRightDragging: 1
 --- !u!1 &1199882893
 GameObject:
   m_ObjectHideFlags: 1
