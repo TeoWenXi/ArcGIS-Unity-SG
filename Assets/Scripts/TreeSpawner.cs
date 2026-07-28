@@ -59,13 +59,14 @@ public class TreeSpawner : MonoBehaviour
         }
 
         int spawned = 0;
+        int startingIndex = 0;
         //for (int i = 1; i < treesData.Length; i++)
-        for (int i = 1; i < 2500; i++)
+        for (int i = 0; i < 2500; i++)
         {
-            if (string.IsNullOrWhiteSpace(treesData[i])) 
+            if (string.IsNullOrWhiteSpace(treesData[startingIndex + i])) 
                 continue;
 
-            string[] cols = SplitCsvLine(treesData[i]);
+            string[] cols = SplitCsvLine(treesData[startingIndex + i]);
             if (cols.Length <= System.Math.Max(latCol, lonCol)) 
                 continue;
 
