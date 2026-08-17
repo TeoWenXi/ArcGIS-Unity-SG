@@ -46,8 +46,8 @@ public class Geometries : MonoBehaviour
     private string unitText;
 
     [Header("-----------State Management-----------")]
-    private bool isDragging = false;
-    private bool isEnvelopeMode = false;
+    [HideInInspector] public bool isDragging = false;
+    [HideInInspector] public bool isEnvelopeMode = false;
     private bool isPolygonMode = false;
     private bool isPolylineMode = true;
 
@@ -57,11 +57,11 @@ public class Geometries : MonoBehaviour
     [SerializeField] public TMP_Text result;
     [SerializeField] public Button[] UnitButtons;
 
-    private InputManager inputManager;
+    //private InputManager inputManager;
 
     private void Awake()
     {
-        inputManager = FindFirstObjectByType<InputManager>();
+        //inputManager = FindFirstObjectByType<InputManager>();
     }
 
     private void Start()
@@ -238,6 +238,7 @@ public class Geometries : MonoBehaviour
             var marker = Instantiate(LineMarker, point, Quaternion.identity, arcGISMapComponent.transform);
             SetSurfacePlacement(marker, MarkerHeight);
             SetElevation(marker);
+            marker.GetComponent<ArcGISLocationComponent>().Rotation = new ArcGISRotation(0, 90, 0);
 
             markers.Add(marker);
             stops.Push(marker);
