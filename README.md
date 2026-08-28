@@ -74,16 +74,23 @@ The corresponding spawner script is in `Assets\Scripts\TreeSpawner.cs`
 
 ## Geographic Position & Terrain Elevation
 
-Objects can be spawned using **Unity world coordinates** without requiring pre-defined longitude/latitude. The **ArcGIS Maps SDK** converts the Unity position to geographic coordinates and provides the corresponding terrain elevation.
+The ArcGIS Maps SDK is used to convert between **Unity world coordinates** and **geographic coordinates**, while maintaining accurate terrain elevation.
 
-**Workflow:**
+**Unity → Geographic (for objects spawned/positioned in Unity):**
 
-1. Define the object's **Unity X/Z position** (e.g. a pedestrian spawn point on a street).
-2. Use `WorldToGeographic()` to convert the Unity world position to an ArcGIS `ArcGISPoint`.
-3. Obtain the terrain elevation at the corresponding geographic location using the ArcGIS elevation/heightmap system.
-4. Apply the resulting elevation to the object's **Unity Y position**.
+1. Define the object's Unity world position (e.g. X/Z position on a street).
+2. Use `WorldToGeographic()` to convert the Unity position to an ArcGIS `ArcGISPoint`.
+3. Use the ArcGIS elevation/heightmap system to obtain the terrain elevation.
+4. Apply the elevation to the object's Unity Y position.
 
-This allows simulation objects such as pedestrians to be positioned using Unity coordinates while maintaining accurate placement relative to the real-world ArcGIS terrain.
+**Geographic → Unity (for objects with known longitude/latitude):**
+
+1. Create an `ArcGISPoint` using the object's longitude/latitude.
+2. Use `GeographicToWorld()` to convert the `ArcGISPoint` to a Unity world position.
+3. Use the returned Unity position to spawn/place the object in the scene.
+
+This allows objects to be positioned either from **Unity coordinates** or **real-world geographic coordinates**, while keeping their placement aligned with the ArcGIS terrain.
+
 
 ## Esri Sample Components
 
